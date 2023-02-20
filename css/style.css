@@ -1,65 +1,251 @@
-/* Reset styles for all elements */
-* {
+/* CSS code for basic layout */
+body {
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-/* Body styles */
-body {
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #333;
-  background-color: #f8f8f8;
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-/* Header styles */
 header {
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,.1);
-  padding: 1rem;
-  background-image:url(/spawny.github.io/assests/background.png)
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+nav {
+  float: right;
 }
 
 nav ul {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
-nav ul li a {
-  color: #333;
+nav li {
+  display: inline-block;
+  margin-left: 70px;
+  padding-top: 23px;
+  position: relative;
+}
+
+nav a {
+  color: #444;
   text-decoration: none;
-  font-weight: bold;
-  padding: 1rem;
+  text-transform: uppercase;
 }
 
-/* Main styles */
-main {
-  padding: 2rem;
-  max-width: 800px;
-  margin: 0 auto;
+nav a:hover {
+  color: #000;
 }
 
-section {
-  margin: 2rem 0;
+nav a::before {
+  content: '';
+  display: block;
+  height: 5px;
+  width: 100%;
+  background-color: #444;
+
+  position: absolute;
+  top: 0;
+  width: 0%;
+  transition: all ease-in-out 250ms;
 }
 
-h1, h2 {
-  font-weight: bold;
-  margin-bottom: 1rem;
+nav a:hover::before {
+  width: 100%;
 }
 
-p {
-  margin-bottom: 1.5rem;
+nav ul ul {
+  display: none;
+  position: absolute;
+  top: 60px;
 }
 
-/* Footer styles */
-footer {
-  background-color: #fff;
-  padding: 1rem;
-  text-align: center;
-  margin-top: 2rem;
+nav ul li:hover > ul {
+  display: inherit;
 }
+
+nav ul ul li {
+  width: 200px;
+  float: none;
+  display: list-item;
+  position: relative;
+  margin-left: 0;
+}
+
+nav ul ul ul li {
+  position: relative;
+  top: -60px;
+  left: 200px;
+}
+
+.menu {
+  display: none;
+}
+
+.menu + ul {
+  display: none;
+  list-style: none;
+}
+
+.menu + ul + ul {
+  display: none;
+}
+
+.menu + ul + ul + ul {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+
+  body {
+    padding: 0 10px;
+  }
+
+  .container {
+    max-width: none;
+  }
+
+  header {
+    padding: 20px 0;
+  }
+
+  .menu {
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 30px;
+    right: 10px;
+  }
+
+  .icon {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #444;
+    position: relative;
+    transition: all ease-in-out 200ms;
+  }
+
+  .icon::before, .icon::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: #444;
+    position: absolute;
+    transition: all ease-in-out 200ms;
+  }
+
+  .icon::before {
+    transform: translateY(-10px);
+  }
+
+  .icon::after {
+    transform: translateY(10px);
+  }
+
+  .menu-links {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #fff;
+   
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .menu-links li {
+    display: block;
+    margin: 10px 0;
+    }
+    
+    .menu-links a {
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    }
+    
+    .menu-links a:hover {
+    color: #000;
+    background-color: #f5f5f5;
+    }
+    
+    .menu:checked ~ .menu-links {
+    display: block;
+    }
+    
+    .menu:checked ~ .icon {
+    transform: rotate(45deg);
+    }
+    
+    .menu:checked ~ .icon::before {
+    transform: translateY(0) rotate(45deg);
+    }
+    
+    .menu:checked ~ .icon::after {
+    transform: translateY(0) rotate(-45deg);
+    }
+    
+    nav ul {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: #fff;
+      z-index: 10;
+      padding: 80px 0;
+      transform: translateY(-100%);
+      transition: all ease-in-out 250ms;
+      }
+      
+      nav ul.show {
+      transform: translateY(0);
+      }
+      
+      nav li {
+      margin-left: 0;
+      padding: 10px 20px;
+      width: 100%;
+      border-bottom: 1px solid #eee;
+      text-align: center;
+      }
+      
+      nav ul ul {
+      position: static;
+      }
+      
+      nav ul ul li {
+      width: 100%;
+      display: block;
+      margin: 0;
+      padding: 10px 20px;
+      }
+      
+      nav ul ul ul li {
+      position: static;
+      top: 0;
+      left: 30px;
+      }
+      
+      nav a::before {
+      display: none;
+      }
+      
+      }
