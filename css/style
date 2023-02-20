@@ -1,82 +1,74 @@
-/* Default styles for desktop devices */
+* {
+	box-sizing: border-box;
+}
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #FDF5E6;
-    background-image: url('./assests/background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-  
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
-  }
-  
-  nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav ul li {
-    margin-left: 20px;
-  }
-  
-  nav ul li:first-child {
-    margin-left: 0;
-  }
-  
-  nav ul li a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  h2 {
-    color: #333;
-    font-size: 36px;
-    margin-top: 0;
-  }
-  
-  p {
-    color: #555;
-    font-size: 18px;
-  }
-  
-  footer {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 10px;
-    text-align: center;
-    font-size: 14px;
-    color: #333;
-  }
-  
-  /* Media queries for smaller devices */
-  
-  @media (max-width: 768px) {
-    header {
-      flex-direction: column;
-    }
-  
-    nav ul {
-      flex-direction: column;
-    }
-  
-    nav ul li {
-      margin: 10px 0;
-    }
-  }
-  
+  background-image: url('/spawny.github.io/assests/background.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-color: #1a1a1a;
+	color: #ffffff;
+	font-family: Arial, sans-serif;
+	margin: 0;
+}
+
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.header {
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.header h1 {
+	font-size: 48px;
+	margin: 0;
+}
+
+.emotion-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-bottom: 40px;
+}
+
+.emotion-buttons button {
+	background-color: #3c3c3c;
+	border: none;
+	color: #ffffff;
+	cursor: pointer;
+	font-size: 24px;
+	margin: 10px;
+	padding: 20px;
+	text-align: center;
+	width: 200px;
+	transition: background-color 0.3s ease-in-out;
+}
+
+.emotion-buttons button:hover {
+	background-color: #4f4f4f;
+}
+
+.audio-player {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.audio-player audio {
+	margin-top: 40px;
+	width: 100%;
+}
+
+@media (max-width: 767px) {
+	.emotion-buttons button {
+		font-size: 18px;
+		padding: 10px;
+		width: 150px;
+	}
+}
